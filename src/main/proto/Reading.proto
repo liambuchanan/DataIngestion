@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "com.plotwatt.data_ingestion";
+option java_outer_classname = "ReadingProto";
+option optimize_for = SPEED;
+
+import "google/protobuf/timestamp.proto";
+
+message Reading {
+    int32 meter_id = 1;
+    google.protobuf.Timestamp intervalStart = 2;
+    google.protobuf.Timestamp intervalEnd = 3;
+    float value = 4;
+}
