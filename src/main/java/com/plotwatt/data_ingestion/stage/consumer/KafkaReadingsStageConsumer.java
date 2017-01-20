@@ -34,7 +34,7 @@ public class KafkaReadingsStageConsumer implements IReadingsStageConsumer {
     }
 
     private void persistReadingsForMeters(HashSet<Integer> meterIds) {
-        final int numConsumers = 1; // Runtime.getRuntime().availableProcessors();
+        final int numConsumers = Runtime.getRuntime().availableProcessors();
         final List<_KafkaReadingsConsumer> kafkaReadingsConsumers = new ArrayList<>();
         final ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
         final List<Future> futures = new ArrayList<>();
