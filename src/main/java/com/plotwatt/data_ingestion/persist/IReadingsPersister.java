@@ -1,8 +1,10 @@
 package com.plotwatt.data_ingestion.persist;
 
+import com.plotwatt.data_ingestion.Reading;
+
 /**
- * Created by liam on 1/13/17.
+ * Created by liam on 1/17/17.
  */
 public interface IReadingsPersister {
-    public void persistMeterReadings(Iterable<Integer> meter_ids);
+    public void persistReadings(Iterable<Reading> readings);
 }

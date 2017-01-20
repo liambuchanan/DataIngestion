@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_package = "com.plotwatt.data_ingestion";
-option java_outer_classname = "ReadingProto";
+option java_outer_classname = "DataIngestionProtos";
 option optimize_for = SPEED;
 
 import "google/protobuf/timestamp.proto";
@@ -11,4 +11,8 @@ message Reading {
     google.protobuf.Timestamp intervalStart = 2;
     google.protobuf.Timestamp intervalEnd = 3;
     float value = 4;
+}
+
+message ReadingsList {
+    repeated Reading readings = 1;
 }
