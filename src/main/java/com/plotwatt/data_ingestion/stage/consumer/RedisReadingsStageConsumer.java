@@ -10,7 +10,7 @@ public class RedisReadingsStageConsumer implements IReadingsStageConsumer {
     }
 
     @Override
-    public void persistReadingsForMeters(Iterable<Integer> meter_ids) {
+    public void persistReadingsForMeters(Iterable<Integer> meterIds) {
 
     }
 }

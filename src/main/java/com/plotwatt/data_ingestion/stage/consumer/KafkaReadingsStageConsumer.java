@@ -25,21 +25,21 @@ public class KafkaReadingsStageConsumer implements IReadingsStageConsumer {
     }
 
     @Override
-    public void persistReadingsForMeters(Iterable<Integer> watchedMeterIds) {
-        final HashSet<Integer> watchedMeterIdsSet = new HashSet<>();
-        for (Integer meterId : watchedMeterIds) {
-            watchedMeterIdsSet.add(meterId);
+    public void persistReadingsForMeters(Iterable<Integer> meterIds) {
+        final HashSet<Integer> meterIdSet = new HashSet<>();
+        for (Integer meterId : meterIds) {
+            meterIdSet.add(meterId);
         }
-        persistReadingsForMeters(watchedMeterIdsSet);
+        persistReadingsForMeters(meterIdSet);
     }
 
-    private void persistReadingsForMeters(HashSet<Integer> watchedMeterIds) {
+    private void persistReadingsForMeters(HashSet<Integer> meterIds) {
         final int numConsumers = 1; // Runtime.getRuntime().availableProcessors();
         final List<_KafkaReadingsConsumer> kafkaReadingsConsumers = new ArrayList<>();
         final ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
         final List<Future> futures = new ArrayList<>();
         for (int i = 0; i < numConsumers; i++) {
-            _KafkaReadingsConsumer kafkaReadingsConsumer = new _KafkaReadingsConsumer(watchedMeterIds);
+            _KafkaReadingsConsumer kafkaReadingsConsumer = new _KafkaReadingsConsumer(meterIds);
             kafkaReadingsConsumers.add(kafkaReadingsConsumer);
             futures.add(executor.submit(kafkaReadingsConsumer));
         }

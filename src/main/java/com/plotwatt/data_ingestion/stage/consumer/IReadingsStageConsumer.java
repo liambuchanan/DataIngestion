@@ -5,5 +5,5 @@ package com.plotwatt.data_ingestion.stage.consumer;
  */
 public interface IReadingsStageConsumer {
     public void persistReadings();
-    public void persistReadingsForMeters(Iterable<Integer> meter_ids);
+    public void persistReadingsForMeters(Iterable<Integer> meterIds);
 }
