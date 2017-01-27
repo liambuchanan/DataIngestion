@@ -21,6 +21,8 @@ buildscript {
 dependencies {
     compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.1.0'
     compile group: 'org.apache.kafka', name: 'kafka-clients', version: '0.10.1.0'
+    compile group: 'com.amazonaws', name: 'amazon-kinesis-client', version: '1.7.3'
+    compile group: 'com.amazonaws', name: 'amazon-kinesis-producer', version: '0.12.3'
 }
 
 protobuf {

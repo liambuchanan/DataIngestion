@@ -21,16 +21,16 @@ public class KafkaReadingsStageProducer implements IReadingsStageProducer {
         properties.put("bootstrap.servers", "localhost:9092");
         properties.put("key.serializer", "org.apache.kafka.common.serialization.IntegerSerializer");
         properties.put("value.serializer", "com.plotwatt.data_ingestion.serialize.KafkaReadingSerializer");
-        this.producer = new KafkaProducer<>(properties);
+        producer = new KafkaProducer<>(properties);
     }
 
     @Override
     public void send(Reading reading) {
-        this.producer.send(new ProducerRecord<>("readings", reading.getMeterId(), reading));
+        producer.send(new ProducerRecord<>("readings", reading.getMeterId(), reading));
     }
 
     @Override
     public void send(Iterable<Reading> readings) {
-        StreamSupport.stream(readings.spliterator(), false).forEach(this::send);
+        readings.forEach(this::send);
     }
 }
