@@ -36,7 +36,7 @@ public class KinesisReadingsStageConsumer implements IReadingsStageConsumer {
             throw new RuntimeException(e);
         }
         final Worker worker = new Worker.Builder()
-                .recordProcessorFactory(new KinesisRecordProcessorFactory())
+                .recordProcessorFactory(new KinesisRecordProcessorFactory(meterIds))
                 .config(config)
                 .build();
         Thread t = new Thread(worker);
