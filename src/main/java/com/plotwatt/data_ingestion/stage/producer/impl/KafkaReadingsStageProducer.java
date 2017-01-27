@@ -13,7 +13,7 @@ import java.util.stream.StreamSupport;
  * Created by liam on 1/13/17.
  */
 public class KafkaReadingsStageProducer implements IReadingsStageProducer {
-    private Producer<Integer, Reading> producer;
+    private final Producer<Integer, Reading> producer;
     public KafkaReadingsStageProducer() {
         // TODO properly consider high importance configuration https://kafka.apache.org/documentation/#producerconfigs
         // hack in config for now
